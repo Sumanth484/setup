@@ -1,0 +1,48 @@
+{
+  "description": "Claude Code project settings — committed to git",
+  "permissions": {
+    "allow": [
+      "read_file",
+      "write_file",
+      "run_terminal_command",
+      "search_codebase",
+      "web_search",
+      "create_file",
+      "edit_file",
+      "delete_file"
+    ],
+    "deny": [
+      "push_to_remote",
+      "run_db_migration_destructive",
+      "modify_env_files",
+      "access_production_secrets"
+    ]
+  },
+  "tools": {
+    "web_search": true,
+    "code_execution": true,
+    "file_creation": true,
+    "terminal": true
+  },
+  "model": "claude-sonnet-4-20250514",
+  "max_tokens": 8192,
+  "project": {
+    "name": "your-project",
+    "type": "fullstack",
+    "language": ["python"],
+    "framework": ["fastapi"],
+    "packageManager": "pip"
+  },
+  "formatting": {
+    "lineLength": 88,
+    "quotes": "double",
+    "formatter": "black",
+    "linter": "ruff",
+    "typeChecker": "mypy"
+  },
+  "rules": [
+    ".claude/rules/code-style.md",
+    ".claude/rules/testing.md",
+    ".claude/rules/api-conventions.md"
+  ]
+}
