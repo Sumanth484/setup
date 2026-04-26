@@ -1,5 +1,5 @@
 {
-  "description": "Claude Code project settings — committed to git",
+  "description": "Claude Code project settings \u2014 committed to git",
   "permissions": {
     "allow": [
       "read_file",
@@ -29,8 +29,12 @@
   "project": {
     "name": "your-project",
     "type": "fullstack",
-    "language": ["python"],
-    "framework": ["fastapi"],
+    "language": [
+      "python"
+    ],
+    "framework": [
+      "fastapi"
+    ],
     "packageManager": "pip"
   },
   "formatting": {
@@ -44,5 +48,26 @@
     ".claude/rules/code-style.md",
     ".claude/rules/testing.md",
     ".claude/rules/api-conventions.md"
-  ]
+  ],
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|Bash",
+        "command": "code-review-graph update --quiet",
+        "timeout": 5000
+      }
+    ],
+    "SessionStart": [
+      {
+        "command": "code-review-graph status --json",
+        "timeout": 3000
+      }
+    ],
+    "PreCommit": [
+      {
+        "command": "code-review-graph detect-changes --brief",
+        "timeout": 10000
+      }
+    ]
+  }
 }
